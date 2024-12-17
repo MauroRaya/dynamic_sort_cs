@@ -1,0 +1,15 @@
+C:\Users\Mauro\Desktop\DynamicSortCs\DynamicSortCs\bin\Debug\net6.0\DynamicSortCs.exe
+C:\Users\Mauro\Desktop\DynamicSortCs\DynamicSortCs\bin\Debug\net6.0\DynamicSortCs.deps.json
+C:\Users\Mauro\Desktop\DynamicSortCs\DynamicSortCs\bin\Debug\net6.0\DynamicSortCs.runtimeconfig.json
+C:\Users\Mauro\Desktop\DynamicSortCs\DynamicSortCs\bin\Debug\net6.0\DynamicSortCs.dll
+C:\Users\Mauro\Desktop\DynamicSortCs\DynamicSortCs\bin\Debug\net6.0\DynamicSortCs.pdb
+C:\Users\Mauro\Desktop\DynamicSortCs\DynamicSortCs\obj\Debug\net6.0\DynamicSortCs.csproj.AssemblyReference.cache
+C:\Users\Mauro\Desktop\DynamicSortCs\DynamicSortCs\obj\Debug\net6.0\DynamicSortCs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mauro\Desktop\DynamicSortCs\DynamicSortCs\obj\Debug\net6.0\DynamicSortCs.AssemblyInfoInputs.cache
+C:\Users\Mauro\Desktop\DynamicSortCs\DynamicSortCs\obj\Debug\net6.0\DynamicSortCs.AssemblyInfo.cs
+C:\Users\Mauro\Desktop\DynamicSortCs\DynamicSortCs\obj\Debug\net6.0\DynamicSortCs.csproj.CoreCompileInputs.cache
+C:\Users\Mauro\Desktop\DynamicSortCs\DynamicSortCs\obj\Debug\net6.0\DynamicSortCs.dll
+C:\Users\Mauro\Desktop\DynamicSortCs\DynamicSortCs\obj\Debug\net6.0\refint\DynamicSortCs.dll
+C:\Users\Mauro\Desktop\DynamicSortCs\DynamicSortCs\obj\Debug\net6.0\DynamicSortCs.pdb
+C:\Users\Mauro\Desktop\DynamicSortCs\DynamicSortCs\obj\Debug\net6.0\DynamicSortCs.genruntimeconfig.cache
+C:\Users\Mauro\Desktop\DynamicSortCs\DynamicSortCs\obj\Debug\net6.0\ref\DynamicSortCs.dll
