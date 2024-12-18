@@ -1,96 +1,81 @@
 ﻿namespace DynamicSortCs {
     internal class Program {
         static void Main(string[] args) {
-            int[] nums = new int[] { 10, 3, 20, 5, 42, 50, 55, 3, 8, 90 };
-            int numsLength = nums.Length;
-            bool quitFlag = false;
+            int[] numbers = new int[] { 10, 3, 20, 5, 42, 50, 55, 3, 8, 90 };
+            bool shouldQuit = false;
 
-            while (!quitFlag) {
-                DisplayArray("Original array: ", nums);
+            while (!shouldQuit) {
+                DisplayArray("Input array: ", numbers);
 
-                Console.WriteLine("Select an algorithm below: ");
+                Console.WriteLine("Select a sorting algorithm below: ");
                 Console.WriteLine("1. Bubble Sort ");
                 Console.WriteLine("2. Selection Sort ");
-                int option = int.Parse(Console.ReadLine());
+                
+                if (!int.TryParse(Console.ReadLine(), out int algorithmChoice)) {
+                    throw new InvalidOperationException();
+                }
 
-                if (option == 1) Context.SetSorting(new BubbleSort());
-                if (option == 2) Context.SetSorting(new SelectionSort());
+                ISort algorithm = algorithmChoice switch {
+                    1 => new BubbleSort(),
+                    2 => new SelectionSort(),
+                    _ => throw new InvalidOperationException(),
+                };
 
-                var start = DateTime.UtcNow;
-                int[] sortedArray = Context.ExecuteSort(nums, numsLength);
-                var end = DateTime.UtcNow;
+                var (sortedArray, executionTime) = MeasureSortingTime(() => algorithm.Sort(numbers));
 
-                var time = end - start;
+                DisplayArray($"Sorted array (Time: {executionTime}): ", sortedArray);
 
-                DisplayArray($"Sorted array (Time: {time}): ", sortedArray);
-
-                Console.WriteLine("Quit? Y-N: ");
-                string quit = Console.ReadLine();
-
-                if (quit.ToLower() == "y") quitFlag = true;
+                Console.WriteLine("Quit? (Y/N): ");
+                shouldQuit = Console.ReadLine()?.Trim().ToLower() == "y";
             }
         }
 
-        public static void DisplayArray(string whichArray, int[] nums) {
-            Console.Write(whichArray);
-            foreach (int num in nums) {
-                Console.Write(num + " ");
-            }
-            Console.WriteLine();
+        public static void DisplayArray(string label, int[] inputArray) {
+            Console.Write(label);
+            Console.WriteLine(string.Join(" ", inputArray));
+        }
+
+        public static (int[], TimeSpan) MeasureSortingTime(Func<int[]> sortingMethod) {
+            var startTime = DateTime.UtcNow;
+            int[] sortedArray = sortingMethod();
+            var endTime = DateTime.UtcNow;
+
+            return (sortedArray, endTime - startTime);
         }
 
         public interface ISort {
-            int[] Sort(int[] originalNums, int len);
+            int[] Sort(int[] inputArray);
         }
 
         public class BubbleSort : ISort {
-            public int[] Sort(int[] originalNums, int len) {
-                int[] nums = originalNums.ToArray();
+            public int[] Sort(int[] inputArray) {
+                int[] copy = inputArray.ToArray();
 
-                for (int i = 0; i < len - 1; i++) {
-                    for (int j = i + 1; j < len; j++) {
-                        if (nums[i] > nums[j]) {
-                            int temp = nums[i];
-                            nums[i]  = nums[j];
-                            nums[j]  = temp;
+                for (int i = 0; i < inputArray.Length - 1; i++) {
+                    for (int j = 0; j < inputArray.Length - i - 1; j++) {
+                        if (copy[j] > copy[j+1]) {
+                            (copy[j], copy[j + 1]) = (copy[j + 1], copy[j]);
                         }
                     }
                 }
-
-                return nums;
+                return copy;
             }
         }
 
         public class SelectionSort : ISort {
-            public int[] Sort(int[] originalNums, int len) {
-                int[] nums = originalNums.ToArray();
+            public int[] Sort(int[] inputArray) {
+                int[] copy = inputArray.ToArray();
 
-                for (int i = 0; i < len - 1; i++) {
-                    int minIdx = i;
-                    for (int j = i + 1; j < len; j++) {
-                        if (nums[j] < nums[minIdx]) {
-                            minIdx = j;
+                for (int i = 0; i < inputArray.Length - 1; i++) {
+                    int minIndex = i;
+                    for (int j = i + 1; j < inputArray.Length; j++) {
+                        if (copy[j] < copy[minIndex]) {
+                            minIndex = j;
                         }
                     }
-
-                    int temp = nums[i];
-                    nums[i]  = nums[minIdx];
-                    nums[minIdx] = temp;
+                    (copy[i], copy[minIndex]) = (copy[minIndex], copy[i]);
                 }
-
-                return nums;
-            }
-        }
-
-        public static class Context {
-            private static ISort _sort;
-
-            public static void SetSorting(ISort sort) {
-                _sort = sort;
-            }
-
-            public static int[] ExecuteSort(int[] nums, int len) {
-                return _sort.Sort(nums, len);
+                return copy;
             }
         }
     }

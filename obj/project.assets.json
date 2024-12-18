@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mauro\\Desktop\\DynamicSortCs\\DynamicSortCs\\DynamicSortCs.csproj",
+      "projectUniqueName": "C:\\Users\\Mauro\\Desktop\\DynamicSortCs\\DynamicSortCs.csproj",
       "projectName": "DynamicSortCs",
-      "projectPath": "C:\\Users\\Mauro\\Desktop\\DynamicSortCs\\DynamicSortCs\\DynamicSortCs.csproj",
+      "projectPath": "C:\\Users\\Mauro\\Desktop\\DynamicSortCs\\DynamicSortCs.csproj",
       "packagesPath": "C:\\Users\\Mauro\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mauro\\Desktop\\DynamicSortCs\\DynamicSortCs\\obj\\",
+      "outputPath": "C:\\Users\\Mauro\\Desktop\\DynamicSortCs\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Mauro\\AppData\\Roaming\\NuGet\\NuGet.Config",
